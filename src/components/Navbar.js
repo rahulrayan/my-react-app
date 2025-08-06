@@ -1,11 +1,28 @@
 import React from "react";
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 
 
 
 export default function Navbar(props) {
+
+  const [mode, setMode] = React.useState(props.mode);
+
+  const handleModes = () => {
+
+    if (mode === 'light') {
+      setMode('dark');
+     document.body.style.backgroundColor = 'grey';
+      document.body.style.color = 'white';
+    } else {
+      setMode('light');
+     document.body.style.backgroundColor = 'white';
+    document.body.style.color = 'black';
+    }
+  }
+
+
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className={`navbar navbar-expand-lg ${mode === 'light' ? 'navbar-light bg-light' : 'navbar-dark bg-dark'}`}>
       <div className="container-fluid">
         <a className="navbar-brand" href="/">
           {props.title}
@@ -35,6 +52,11 @@ export default function Navbar(props) {
             </li>
           </ul>
         </div>
+
+        <div className="form-check form-switch">
+          <input className="form-check-input" onClick={handleModes} type="checkbox" role="switch" id="switchCheckDefault"/>
+          <label className="form-check-label" htmlFor="switchCheckDefault">Enable Dark mode</label>
+     </div>
       </div>
     </nav>
   );
