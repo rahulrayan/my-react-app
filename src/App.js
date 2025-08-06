@@ -1,17 +1,19 @@
 import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
+import Accordian from "./components/Accordian";
 
 function App() {
   return (
-    <div>
+    <>
       <Navbar title="TextUtils" />
       
       <div className="container my-3">
 
-      <TextForm  heading="Enter the text to analyze"/>
-      </div>
+      {/*</div><TextForm  heading="Enter the text to analyze"/> */}
+        <Accordian />
     </div>
+    </>
   );
 }
 
